@@ -21,6 +21,7 @@ function loadPhotos() {
     import: 'default',
   }) as Record<string, string>
 
+  // New photos in assets (pic2–pic7) are included automatically.
   return Object.entries(modules)
     .filter(([path]) => !path.toLowerCase().includes('hero'))
     .sort(([a], [b]) => a.localeCompare(b))
