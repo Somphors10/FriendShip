@@ -1,3 +1,4 @@
+import { FloatingHearts } from './components/FloatingHearts'
 import { PhotoScroller } from './components/PhotoScroller'
 
 const letter = [
@@ -18,20 +19,48 @@ const letter = [
   'Thank you for being a part of my story. I will always cherish the memories we made together. ❤️',
 ]
 
+function EmojiRow() {
+  return (
+    <p className="flex items-center justify-center gap-2.5 text-lg sm:text-xl" aria-hidden="true">
+      <span>💕</span>
+      <span>✨</span>
+      <span>🤗</span>
+      <span>✨</span>
+      <span>💕</span>
+    </p>
+  )
+}
+
 export default function App() {
   return (
-    <main className="min-h-svh bg-cream py-10 text-ink sm:py-16">
+    <main className="relative min-h-svh overflow-hidden py-8 text-ink sm:py-14">
+      <FloatingHearts />
+
+      <header className="relative z-10 mb-6 px-5 text-center sm:mb-8">
+        <p className="font-hand text-2xl text-rose sm:text-3xl">our little universe ✨</p>
+        <p className="mt-1 text-sm text-muted sm:text-base">memories, laughter, and people I love 💌</p>
+      </header>
+
       <PhotoScroller />
 
-      <article className="mx-auto max-w-2xl px-5 sm:px-8">
-        <h1 className="font-display text-3xl font-medium tracking-tight text-balance sm:text-4xl">
-          To all my friends ❤️
-        </h1>
+      <article className="relative z-10 mx-auto max-w-2xl px-5 pb-12 sm:px-8">
+        <div className="rounded-[1.75rem] bg-paper/90 p-6 shadow-[0_24px_50px_-28px_rgba(61,44,44,0.45)] ring-1 ring-rose-soft/60 sm:p-10">
+          <EmojiRow />
 
-        <div className="mt-8 space-y-5 text-base leading-relaxed text-ink-soft sm:text-lg sm:leading-8">
-          {letter.map((paragraph) => (
-            <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-          ))}
+          <h1 className="mt-4 text-center font-display text-3xl font-medium tracking-tight text-balance sm:text-4xl">
+            To all my friends ❤️
+          </h1>
+
+          <div className="mt-8 space-y-5 text-base leading-relaxed text-ink-soft sm:text-lg sm:leading-8">
+            {letter.map((paragraph) => (
+              <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <EmojiRow />
+            <p className="mt-3 font-hand text-2xl text-rose sm:text-3xl">forever friends 🤗</p>
+          </div>
         </div>
       </article>
     </main>
