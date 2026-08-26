@@ -1,16 +1,24 @@
 const stickers = ['❤️', '✨', '🤗', '💕', '🌸', '💌']
 const tilts = ['-rotate-2', 'rotate-1', '-rotate-1', 'rotate-2', 'rotate-0', '-rotate-3']
-const pinColors = ['#e05c5c', '#e8b04a', '#6a9c9c', '#d4789a', '#7a8fd4', '#e07a5f']
+const pinColors = ['#e05c5c', '#e07a9a', '#d4789a', '#e8a0a0', '#c45d7a', '#e07a5f']
 const pinOffsets = ['left-1/2', 'left-[42%]', 'left-[58%]', 'left-[46%]', 'left-[54%]', 'left-[40%]']
 
-function Pin({ color }: { color: string }) {
+function HeartPin({ color }: { color: string }) {
   return (
-    <svg viewBox="0 0 24 32" className="h-7 w-5 drop-shadow-sm sm:h-8 sm:w-6" aria-hidden="true">
-      <ellipse cx="12" cy="30" rx="3.2" ry="1.1" fill="rgba(61,44,44,0.22)" />
-      <path d="M12 14.5 L11.2 29 L12.8 29 Z" fill="#8b9198" />
-      <circle cx="12" cy="9" r="7.4" fill={color} />
-      <circle cx="12" cy="9" r="7.4" fill="rgba(255,255,255,0.12)" />
-      <circle cx="9.5" cy="6.5" r="2.3" fill="rgba(255,255,255,0.6)" />
+    <svg viewBox="0 0 28 36" className="h-8 w-6 drop-shadow-sm sm:h-9 sm:w-7" aria-hidden="true">
+      <ellipse cx="14" cy="34.2" rx="3.4" ry="1.15" fill="rgba(61,44,44,0.22)" />
+      <path d="M14 16.5 L13.15 33 L14.85 33 Z" fill="#8b9198" />
+      <path
+        d="M14 21.2s-8.2-5-8.2-10.05C5.8 8.3 8 6.2 10.75 6.2c1.45 0 2.75.7 3.25 1.85.5-1.15 1.8-1.85 3.25-1.85 2.75 0 4.95 2.1 4.95 4.95 0 5.05-8.2 10.05-8.2 10.05Z"
+        fill={color}
+      />
+      <path
+        d="M10.4 8.35c.7-.55 1.55-.75 2.25-.35"
+        fill="none"
+        stroke="rgba(255,255,255,0.55)"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+      />
     </svg>
   )
 }
@@ -56,21 +64,21 @@ function PhotoRow({ photos, direction, duration }: PhotoRowProps) {
       {loop.map((src, index) => (
         <figure
           key={`${src}-${index}`}
-          className={`relative shrink-0 rounded-md bg-paper p-2 pb-8 pt-3 shadow-[0_10px_24px_-12px_rgba(61,44,44,0.35)] ${
+          className={`relative shrink-0 rounded-md bg-paper p-2 pb-5 pt-3 shadow-[0_10px_24px_-12px_rgba(61,44,44,0.35)] ${
             tilts[index % tilts.length]
           }`}
         >
           <span
-            className={`absolute top-[-0.7rem] z-10 -translate-x-1/2 ${pinOffsets[index % pinOffsets.length]}`}
+            className={`absolute top-[-0.85rem] z-10 -translate-x-1/2 ${pinOffsets[index % pinOffsets.length]}`}
           >
-            <Pin color={pinColors[index % pinColors.length]} />
+            <HeartPin color={pinColors[index % pinColors.length]} />
           </span>
           <img
             src={src}
             alt="A memory with friends"
             className="h-40 w-32 object-cover sm:h-52 sm:w-40 md:h-60 md:w-48"
           />
-          <figcaption className="mt-2 text-center text-base" aria-hidden="true">
+          <figcaption className="mt-3.5 text-center text-base" aria-hidden="true">
             {stickers[index % stickers.length]}
           </figcaption>
         </figure>
